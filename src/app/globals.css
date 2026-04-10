@@ -1,26 +1,38 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-brand-primary: #1C4ED8;
+  --color-brand-primary-hover: #1E40AF;
+  --color-brand-dark: #0B132B;
+  --color-brand-onyx: #121212;
+  --color-brand-light: #F8FAFC;
+  --color-brand-gray: #64748B;
+  --color-brand-gray-dark: #334155;
+  --color-brand-border: #1E293B;
 
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Font mapping */
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* We force dark mode visually for the premium feel, but set variables to keep it adaptable */
+  --background: #0B132B; /* Deep Navy Default */
+  --foreground: #F8FAFC; /* Slate 50 */
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base resets & utilities */
+::selection {
+  background-color: var(--color-brand-primary);
+  color: #ffffff;
 }

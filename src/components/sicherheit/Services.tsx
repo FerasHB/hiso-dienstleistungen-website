@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, HardHat, Users, MapPin } from "lucide-react";
+import { ShieldCheck, HardHat, Users, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const services = [
@@ -10,15 +10,15 @@ const services = [
     title: "Objektschutz",
     description: "Lückenlose Überwachung und Schutz für Immobilien, Firmengebäude und sensible Anlagen. Präventiv und reaktiv.",
     icon: ShieldCheck,
-    features: ["Zutrittskontrollen", "Rundgänge", "Schlüsselverwaltung"],
+    features: ["Zutrittskontrollen & Empfang", "Regelmäßige Patrouillen", "Schlüsselverwaltung"],
     delay: 0.1,
   },
   {
     id: "baustellenbewachung",
     title: "Baustellenbewachung",
-    description: "Sicherung Ihrer Baustelle vor Diebstahl, Vandalismus und Sabotage, insbesondere außerhalb der Arbeitszeiten.",
+    description: "Sicherung Ihrer Baustelle vor Diebstahl, Vandalismus und schwerer Sabotage, insbesondere außerhalb der Arbeitszeiten.",
     icon: HardHat,
-    features: ["Materialschutz", "Zufahrtskontrolle", "Patrouillen"],
+    features: ["Umfassender Materialschutz", "Strenge Zufahrtskontrolle", "Absicherung von Baugeräten"],
     delay: 0.2,
   },
   {
@@ -26,7 +26,7 @@ const services = [
     title: "Event-Security",
     description: "Professioneller Schutz für Veranstaltungen jeder Größenordnung. Unauffällig, souverän und absolut zuverlässig.",
     icon: Users,
-    features: ["Einlasskontrolle", "VIP-Betreuung", "Crowd Management"],
+    features: ["Digitale Einlasskontrolle", "Diskrete VIP-Betreuung", "Strategisches Crowd Management"],
     delay: 0.3,
   },
   {
@@ -34,64 +34,97 @@ const services = [
     title: "Revierdienst",
     description: "Mobile Sicherheitsstreifen mit flexiblen Kontrollzeiten zur Abschreckung und schnellen Intervention bei Alarmen.",
     icon: MapPin,
-    features: ["Schließdienste", "Alarmverfolgung", "Zustandskontrollen"],
+    features: ["Zertifizierte Schließdienste", "Schnelle Alarmverfolgung", "Lückenlose Zustandskontrollen"],
     delay: 0.4,
   },
 ];
 
 export default function SecurityServices() {
   return (
-    <section className="py-24 bg-brand-dark/50 border-b border-brand-border/50 relative">
-      <div className="container max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Spezialisierte <span className="text-brand-primary">Sicherheitsdienste</span>
-          </h2>
-          <p className="text-brand-gray text-lg">
-            Wir bieten ganzheitliche Sicherheitslösungen, die exakt auf die spezifischen Anforderungen Ihrer Branche und Situation zugeschnitten sind.
-          </p>
+    <section className="py-32 bg-brand-dark relative z-10">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div className="max-w-2xl">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight"
+            >
+              Exzellenz in <br />
+              <span className="text-brand-primary">allen Bereichen.</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-brand-gray/90 text-lg md:text-xl font-light leading-relaxed max-w-xl"
+            >
+              Wir bieten ganzheitliche Sicherheitslösungen, die exakt auf die spezifischen Anforderungen Ihrer Branche und Situation zugeschnitten sind.
+            </motion.p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: service.delay }}
-                className="group relative bg-[#121A33] border border-brand-border rounded-2xl p-8 hover:border-brand-primary/50 transition-colors"
+                transition={{ duration: 0.7, delay: service.delay, ease: "easeOut" }}
+                className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
+                {/* Premium Gradient Border Effect on Hover */}
+                <div className="absolute -inset-0.5 bg-gradient-to-br from-brand-primary/0 to-blue-500/0 rounded-[2rem] opacity-0 group-hover:from-brand-primary/50 group-hover:to-blue-500/50 group-hover:opacity-100 transition-all duration-500 blur-sm mix-blend-screen" />
                 
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-primary/20 transition-colors">
-                    <Icon className="w-7 h-7 text-brand-primary" />
-                  </div>
+                <div className="relative h-full bg-white/[0.02] border border-white/[0.05] rounded-[2rem] p-8 lg:p-10 backdrop-blur-md hover:bg-white/[0.04] transition-colors overflow-hidden">
                   
-                  <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                  <p className="text-brand-gray mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
-                  
-                  <ul className="mb-8 space-y-3">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-brand-light/80">
-                        <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mr-3" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Internal Glow on Hover */}
+                  <div className="absolute -right-20 -top-20 w-64 h-64 bg-brand-primary/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                  <Link 
-                    href="/kontakt" 
-                    className="inline-flex items-center text-brand-primary font-medium hover:text-blue-400 transition-colors"
-                  >
-                    Details anfragen
-                    <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
-                  </Link>
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="flex items-center justify-between mb-8">
+                      <div className="w-16 h-16 bg-gradient-to-br from-brand-primary/20 to-brand-primary/5 border border-brand-primary/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <Icon className="w-8 h-8 text-brand-primary" />
+                      </div>
+                      <span className="text-white/10 text-6xl font-black italic select-none">
+                        0{services.indexOf(service) + 1}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">{service.title}</h3>
+                    <p className="text-brand-gray/80 text-lg mb-8 leading-relaxed font-light">
+                      {service.description}
+                    </p>
+                    
+                    <div className="flex-grow">
+                      <ul className="mb-10 space-y-4">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center text-brand-light/90 font-medium">
+                            <span className="flex-shrink-0 w-2 h-2 rounded-full bg-brand-primary mr-4 shadow-[0_0_8px_rgba(230,57,70,0.8)]" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mt-auto pt-6 border-t border-white/[0.05]">
+                      <Link 
+                        href="/kontakt" 
+                        className="inline-flex items-center text-white font-semibold hover:text-brand-primary transition-colors group/link"
+                      >
+                        Sicherheitskonzept anfragen
+                        <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover/link:translate-x-1" />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             );

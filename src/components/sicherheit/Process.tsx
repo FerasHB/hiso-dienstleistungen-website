@@ -1,58 +1,57 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, ClipboardCheck, ShieldCheck } from "lucide-react";
+import { Radar, ClipboardCheck, ShieldCheck } from "lucide-react";
 
 const steps = [
   {
     number: "01",
-    title: "Kontakt & Analyse",
-    description: "In einem ersten vertraulichen Gespräch analysieren wir Ihre spezifische Gefährdungslage und Ihre Anforderungen.",
-    icon: Phone,
+    title: "Vor-Ort-Gefährdungsbeurteilung",
+    description: "Unsere Experten analysieren kritische Schwachstellen direkt an Ihrem Objekt und identifizieren alle potenziellen Risikofaktoren.",
+    icon: Radar,
   },
   {
     number: "02",
-    title: "Sicherheitskonzept",
-    description: "Unsere Experten entwickeln ein maßgeschneidertes Schutzkonzept, das personelle und technische Maßnahmen optimal kombiniert.",
+    title: "Ressourcen- & Personalplanung",
+    description: "Erstellung eines fundierten, taktischen Maßnahmenkatalogs inklusive Revierplanung und technischer Ergänzungen.",
     icon: ClipboardCheck,
   },
   {
     number: "03",
-    title: "Implementierung",
-    description: "Nahtlose und diskrete Integration unserer Sicherheitskräfte in Ihre Abläufe für sofortigen, kompromisslosen Schutz.",
+    title: "Operative Ausführung & Monitoring",
+    description: "Nahtlose Übernahme durch geschultes Personal. Ab Stunde 1 direkte Anbindung an unsere 24/7 Leitstelle für lückenlosen Schutz.",
     icon: ShieldCheck,
   },
 ];
 
 export default function SecurityProcess() {
   return (
-    <section className="py-32 bg-brand-dark/95 relative z-10">
+    <section className="py-24 bg-[#0A0D14] relative z-10 border-b border-white/5">
       <div className="container max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="max-w-3xl mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight"
+            className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight uppercase"
           >
-            Unser Ansatz für <span className="text-brand-primary">Ihre Sicherheit.</span>
+            Operativer <span className="text-brand-primary">Workflow</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-brand-gray/90 text-lg font-light leading-relaxed"
+            className="text-brand-gray/90 text-lg font-normal leading-relaxed"
           >
-            Ein strukturierter und transparenter Prozess stellt sicher, dass wir Bedrohungen erkennen, bevor sie entstehen.
+            Keine Überraschungen, keine Lücken. Ein streng reglementierter Prozess garantiert maximale Verlässlichkeit und reaktionsschnelle Schutzmaßnahmen.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8 relative">
-          {/* Connector Line (Desktop only) */}
-          <div className="hidden md:block absolute top-[4.5rem] left-[10%] right-[10%] h-[1px] bg-white/10 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/0 via-brand-primary/50 to-brand-primary/0" />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          
+          {/* Connector Line */}
+          <div className="hidden md:block absolute top-[2.5rem] left-[15%] right-[20%] h-[2px] bg-white/10 z-0 border-t-2 border-dashed border-white/20"></div>
 
           {steps.map((step, index) => {
             const Icon = step.icon;
@@ -62,19 +61,18 @@ export default function SecurityProcess() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative z-10 flex flex-col items-center text-center"
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="relative z-10 flex flex-col bg-[#1A1A1A] border border-white/10 p-8 rounded-sm"
               >
-                <div className="w-20 h-20 bg-brand-dark border-2 border-white/10 rounded-2xl flex items-center justify-center mb-8 relative shadow-xl z-10 group-hover:border-brand-primary/50 transition-colors">
-                  <div className="absolute inset-0 bg-brand-primary/10 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <Icon className="w-8 h-8 text-brand-primary" />
+                <div className="w-16 h-16 bg-brand-dark border border-brand-primary/50 text-brand-primary rounded-sm flex items-center justify-center mb-8 relative z-10">
+                  <Icon className="w-7 h-7" />
                 </div>
                 
                 <div className="text-sm font-bold text-brand-primary mb-3 tracking-widest uppercase">
-                  Schritt {step.number}
+                  Phase {step.number}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
-                <p className="text-brand-gray/80 leading-relaxed font-light">
+                <h3 className="text-xl font-bold text-white mb-4 pr-4 leading-tight">{step.title}</h3>
+                <p className="text-brand-gray/80 leading-relaxed font-normal">
                   {step.description}
                 </p>
               </motion.div>
